@@ -1,0 +1,102 @@
+import React from 'react';
+
+const Hero: React.FC = () => {
+  const techStack = [
+    'React',
+    'TypeScript',
+    'Python',
+    'AI/ML',
+    'Server-Sent Events',
+    'Redux',
+    'Tailwind CSS',
+  ];
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Gradient Background Effects */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-3xl opacity-20 animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500/30 rounded-full filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Availability Badge */}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8 animate-pulse">
+            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+            <span className="text-green-500 text-sm font-medium">Available for freelance</span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <span className="block mb-2">I'm a</span>
+            <span className="gradient-text">software developer</span>
+          </h1>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary">
+            who builds AI apps and sleek UIs.
+          </h2>
+
+          {/* Description */}
+          <p className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed">
+            Frontend wizard exploring AI. I craft beautiful user interfaces and build intelligent
+            applications that make people's lives easier. Currently building real-time AI platforms
+            at <span className="text-primary font-semibold">Dview Technologies</span>
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a
+              href="#"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Download CV
+            </a>
+            <a
+              href="#projects"
+              className="w-full sm:w-auto px-8 py-3 rounded-lg border-2 border-primary text-primary font-medium hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+            >
+              View Projects
+            </a>
+          </div>
+
+          {/* Tech Stack */}
+          <div className="space-y-4">
+            <p className="text-text-secondary font-medium">Building amazing things with</p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {techStack.map((tech, index) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 rounded-lg bg-background-secondary border border-primary/20 text-sm font-medium hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-default"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg
+          className="w-6 h-6 text-primary"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
