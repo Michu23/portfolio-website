@@ -74,18 +74,16 @@ const Timeline: React.FC = () => {
               {timelineData.map((item, index) => (
                 <div
                   key={item.year}
-                  className={`relative flex flex-col md:flex-row items-start ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  className={`relative flex flex-col md:flex-row items-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                    }`}
                 >
                   {/* Year Badge */}
                   <div className="flex items-center md:w-1/2 mb-4 md:mb-0">
                     <div
-                      className={`flex items-center ${
-                        index % 2 === 0
+                      className={`flex items-center ${index % 2 === 0
                           ? 'md:justify-end md:pr-8'
                           : 'md:justify-start md:pl-8'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center space-x-4">
                         {/* Dot */}
@@ -105,9 +103,8 @@ const Timeline: React.FC = () => {
                   {/* Content */}
                   <div className="md:w-1/2 pl-16 md:pl-0">
                     <div
-                      className={`card-gradient rounded-xl p-6 space-y-3 ${
-                        index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
-                      }`}
+                      className={`card-gradient rounded-xl p-6 space-y-3 ${index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
+                        }`}
                     >
                       {item.items.map((achievement, i) => (
                         <div key={i} className="flex items-start space-x-3">
