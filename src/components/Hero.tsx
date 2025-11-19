@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const techStack = [
@@ -12,42 +13,75 @@ const Hero: React.FC = () => {
     'Figma',
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delay: 4,
+        staggerChildren: 0.2,
+        delayChildren: 0,
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Gradient Background Effects */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full filter blur-3xl opacity-20 animate-float"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-pink-500/30 rounded-full filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl opacity-20 animate-float" style={{ animationDelay: '2s' }}></div>
-      </div>
+      {/* Rotating Circular Glows */}
+      <div className="rotating-glow-container"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <motion.div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="max-w-5xl mx-auto text-center">
           {/* Availability Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8 animate-pulse">
-            <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-            <span className="text-green-500 text-sm font-medium">Available for freelance</span>
-          </div>
+          <motion.div variants={itemVariants}>
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8 animate-pulse">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+              <span className="text-green-500 text-sm font-medium">Available for freelance</span>
+            </div>
+          </motion.div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            variants={itemVariants}
+          >
             <span className="block mb-2">I'm a</span>
             <span className="gradient-text">software developer</span>
-          </h1>
+          </motion.h1>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary">
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary"
+            variants={itemVariants}
+          >
             building real-time interfaces and full-stack solutions.
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed">
+          <motion.p
+            className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed"
+            variants={itemVariants}
+          >
             Software engineer with hands-on experience in front-end development, real-time interfaces, and cross-functional product work.
             Strong focus on structured execution, clarity in communication, and continuous improvement.
             Currently at <span className="text-primary font-semibold">Dview Technologies</span> as a founding team member.
-          </p>
+          </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            variants={itemVariants}
+          >
             <a
               href="#"
               className="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 transform hover:-translate-y-1"
@@ -60,10 +94,10 @@ const Hero: React.FC = () => {
             >
               View Projects
             </a>
-          </div>
+          </motion.div>
 
           {/* Tech Stack */}
-          <div className="space-y-4">
+          <motion.div className="space-y-4" variants={itemVariants}>
             <p className="text-text-secondary font-medium">Building amazing things with</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {techStack.map((tech, index) => (
@@ -76,12 +110,17 @@ const Hero: React.FC = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 5.5, duration: 0.8 }}
+      >
         <svg
           className="w-6 h-6 text-primary"
           fill="none"
@@ -95,7 +134,7 @@ const Hero: React.FC = () => {
             d="M19 14l-7 7m0 0l-7-7m7 7V3"
           />
         </svg>
-      </div>
+      </motion.div>
     </section>
   );
 };
