@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 const About: React.FC = () => {
   return (
@@ -13,11 +14,13 @@ const About: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl blur-2xl opacity-30 animate-pulse"></div>
 
                 {/* Profile Card */}
-                <div className="relative card-gradient rounded-2xl p-8 backdrop-blur-sm">
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-8xl font-bold text-primary">
-                    M
+                <SpotlightCard className="card-gradient rounded-2xl backdrop-blur-sm">
+                  <div className="p-8">
+                    <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-8xl font-bold text-primary">
+                      M
+                    </div>
                   </div>
-                </div>
+                </SpotlightCard>
               </div>
             </div>
 

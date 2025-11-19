@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import SpotlightCard from './SpotlightCard';
 
 interface TimelineItem {
   year: string;
@@ -188,17 +189,18 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ item }) => {
         {/* Image */}
         {item.image && (
           <motion.div
-            className="overflow-hidden rounded-xl card-gradient"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, margin: '-100px' }}
           >
-            <img
-              src={item.image}
-              alt={`${item.year} milestone`}
-              className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
-            />
+            <SpotlightCard className="overflow-hidden rounded-xl card-gradient">
+              <img
+                src={item.image}
+                alt={`${item.year} milestone`}
+                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </SpotlightCard>
           </motion.div>
         )}
       </motion.div>

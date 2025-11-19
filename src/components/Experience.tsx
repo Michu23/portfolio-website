@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 interface Job {
   title: string;
@@ -96,7 +97,8 @@ const Experience: React.FC = () => {
 
             <div className="space-y-8">
               {jobs.map((job, index) => (
-                <div key={index} className="card-gradient rounded-xl p-6 md:p-8 hover:shadow-xl transition-all duration-300">
+                <SpotlightCard key={index} className="card-gradient rounded-xl hover:shadow-xl transition-all duration-300">
+                  <div className="p-6 md:p-8">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div className="mb-4 md:mb-0">
                       <h3 className="text-2xl font-bold mb-2">{job.title}</h3>
@@ -131,7 +133,8 @@ const Experience: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                  </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
@@ -147,7 +150,8 @@ const Experience: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {training.map((item, index) => (
-                <div key={index} className="card-gradient rounded-xl p-6 hover:shadow-xl transition-all duration-300">
+                <SpotlightCard key={index} className="card-gradient rounded-xl hover:shadow-xl transition-all duration-300">
+                  <div className="p-6">
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className="text-lg text-primary font-semibold mb-2">{item.company}</p>
                   <p className="text-text-secondary mb-1">{item.period}</p>
@@ -171,7 +175,8 @@ const Experience: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                  </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>

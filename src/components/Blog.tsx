@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 interface BlogPost {
   title: string;
@@ -50,10 +51,11 @@ const Blog: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post, index) => (
-              <article
+              <SpotlightCard
                 key={index}
-                className="card-gradient rounded-xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
+                className="card-gradient rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col"
               >
+                <article className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center text-text-secondary text-sm mb-4 space-x-4">
                   <time className="flex items-center space-x-1">
                     <svg
@@ -113,7 +115,8 @@ const Blog: React.FC = () => {
                     />
                   </svg>
                 </a>
-              </article>
+                </article>
+              </SpotlightCard>
             ))}
           </div>
         </div>

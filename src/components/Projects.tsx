@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 interface Project {
   title: string;
@@ -48,12 +49,13 @@ const Projects: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {projects.map((project, index) => (
-              <div
+              <SpotlightCard
                 key={index}
-                className={`card-gradient rounded-xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
+                className={`card-gradient rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
                   project.featured ? 'lg:col-span-2' : ''
                 }`}
               >
+                <div className="p-6 md:p-8">
                 {project.featured && (
                   <span className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-bold mb-4">
                     Featured
@@ -95,7 +97,8 @@ const Projects: React.FC = () => {
                     </svg>
                   </a>
                 )}
-              </div>
+                </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

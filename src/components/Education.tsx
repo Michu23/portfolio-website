@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 interface EducationItem {
   degree: string;
@@ -36,10 +37,11 @@ const Education: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {education.map((item, index) => (
-              <div
+              <SpotlightCard
                 key={index}
-                className="card-gradient rounded-xl p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="card-gradient rounded-xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
+                <div className="p-6">
                 <div className="mb-4">
                   <svg
                     className="w-12 h-12 mx-auto text-primary"
@@ -70,7 +72,8 @@ const Education: React.FC = () => {
                 <h3 className="text-xl font-bold mb-2">{item.degree}</h3>
                 <p className="text-text-secondary mb-2">{item.institution}</p>
                 <p className="text-primary font-semibold">{item.year}</p>
-              </div>
+                </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

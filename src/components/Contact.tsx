@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SpotlightCard from './SpotlightCard';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -76,7 +77,8 @@ const Contact: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-6">
-              <div className="card-gradient rounded-xl p-8">
+              <SpotlightCard className="card-gradient rounded-xl">
+                <div className="p-8">
                 <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
@@ -95,7 +97,8 @@ const Contact: React.FC = () => {
                     </a>
                   ))}
                 </div>
-              </div>
+                </div>
+              </SpotlightCard>
 
               {/* Decorative Element */}
               <div className="hidden lg:block">
@@ -111,7 +114,8 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="card-gradient rounded-xl p-8">
+            <SpotlightCard className="card-gradient rounded-xl">
+              <div className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -168,7 +172,8 @@ const Contact: React.FC = () => {
                   Send Message
                 </button>
               </form>
-            </div>
+              </div>
+            </SpotlightCard>
           </div>
         </div>
       </div>

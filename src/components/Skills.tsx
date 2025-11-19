@@ -1,4 +1,5 @@
 import React from 'react';
+import SpotlightCard from './SpotlightCard';
 
 interface SkillCategory {
   title: string;
@@ -69,10 +70,11 @@ const Skills: React.FC = () => {
           {/* Technical Skills Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {skillCategories.map((category, index) => (
-              <div
+              <SpotlightCard
                 key={index}
-                className="card-gradient rounded-xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="card-gradient rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
+                <div className="p-6">
                 <div className="text-4xl mb-4">{category.icon}</div>
                 <h3 className="text-xl font-bold mb-4">{category.title}</h3>
                 <ul className="space-y-2">
@@ -93,12 +95,14 @@ const Skills: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+                </div>
+              </SpotlightCard>
             ))}
           </div>
 
           {/* Core Skills & Expertise */}
-          <div className="card-gradient rounded-xl p-8">
+          <SpotlightCard className="card-gradient rounded-xl">
+            <div className="p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Core Skills & Expertise</h3>
             <p className="text-text-secondary text-center mb-8">
               Key competencies that drive my development approach
@@ -124,7 +128,8 @@ const Skills: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+            </div>
+          </SpotlightCard>
         </div>
       </div>
     </section>
