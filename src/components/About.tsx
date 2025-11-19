@@ -31,35 +31,37 @@ const About: React.FC = () => {
                   Hey! I'm <span className="gradient-text">Miras</span>,
                 </h2>
                 <h3 className="text-2xl md:text-3xl font-semibold text-text-secondary mb-6">
-                  a frontend wizard exploring AI.
+                  a software engineer building real-time solutions.
                 </h3>
               </div>
 
               <div className="space-y-4 text-lg text-text-secondary leading-relaxed">
                 <p>
-                  I've been obsessed with technology ever since I was a kid. When I wasn't taking
-                  apart my family's computer (sorry, mom), I was teaching myself how to code. Fast
-                  forward a few years, and now I'm a full-fledged code ninja with an insatiable
-                  thirst for creating beautiful websites and functional applications.
+                  Software engineer with a computer science background and hands-on experience in front-end development,
+                  real-time interfaces, and cross-functional product work. I built streaming interfaces for large language
+                  model responses at Dview and collaborated closely with backend teams to deliver coordinated features.
                 </p>
 
                 <p>
-                  When I'm not busy slaying bugs and writing code, I'm usually busy indulging in my
-                  two favorite hobbies: exploring new AI technologies and perfecting user
-                  interfaces. I firmly believe that a good user experience and clean code can fix
-                  just about anything, including my tendency to drink way too much coffee.
+                  Strong focus on structured execution, clarity in communication, and continuous improvement.
+                  Currently working as a founding team member at Dview Technologies while also reviewing student
+                  projects at Brototype. Aspiring to pursue a Master's in Germany (Summer 2026) and highly aligned
+                  with programs like Master@IBM.
                 </p>
               </div>
 
-              {/* Featured Projects */}
+              {/* Key Skills */}
               <div className="pt-6">
-                <h4 className="text-xl font-semibold mb-4">Featured Projects</h4>
+                <h4 className="text-xl font-semibold mb-4">Core Competencies</h4>
                 <div className="flex flex-wrap gap-3">
                   <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
-                    DsenseStreamViewer
+                    Real-time Interfaces
                   </span>
                   <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
-                    AI Haircare Tracker
+                    API Integration
+                  </span>
+                  <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
+                    Structured Execution
                   </span>
                 </div>
               </div>

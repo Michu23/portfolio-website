@@ -5,10 +5,11 @@ const Hero: React.FC = () => {
     'React',
     'TypeScript',
     'Python',
-    'AI/ML',
-    'Server-Sent Events',
-    'Redux',
-    'Tailwind CSS',
+    'Django',
+    'Kubernetes',
+    'Docker',
+    'Git',
+    'Figma',
   ];
 
   return (
@@ -35,14 +36,14 @@ const Hero: React.FC = () => {
           </h1>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary">
-            who builds AI apps and sleek UIs.
+            building real-time interfaces and full-stack solutions.
           </h2>
 
           {/* Description */}
           <p className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed">
-            Frontend wizard exploring AI. I craft beautiful user interfaces and build intelligent
-            applications that make people's lives easier. Currently building real-time AI platforms
-            at <span className="text-primary font-semibold">Dview Technologies</span>
+            Software engineer with hands-on experience in front-end development, real-time interfaces, and cross-functional product work.
+            Strong focus on structured execution, clarity in communication, and continuous improvement.
+            Currently at <span className="text-primary font-semibold">Dview Technologies</span> as a founding team member.
           </p>
 
           {/* CTA Buttons */}

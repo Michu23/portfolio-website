@@ -21,16 +21,27 @@ interface Training {
 const Experience: React.FC = () => {
   const jobs: Job[] = [
     {
-      title: 'Software Engineer',
+      title: 'Software Engineer & Founding Team Member',
       company: 'Dview Technologies',
       period: 'Jul 2023 – Present',
       location: 'Bengaluru, India',
       current: true,
       achievements: [
-        'Engineered DsenseStreamViewer, a real-time AI platform that renders LLM outputs using Server-Sent Events and multi-phase streaming with React, optimizing latency and UI control',
-        'Drove product development by converting complex AI pipelines into responsive interfaces through tight integration with backend systems and deep product-level decision-making',
-        'Developed advanced custom React hooks to orchestrate streaming states, boost performance, and enforce consistency across multi-phase AI response rendering workflows',
-        'Implemented ECharts and Plotly to deliver high-performance visual layers for dynamic data, supporting critical decision-making across AI-driven dashboards and tools',
+        'Led end-to-end frontend development for the company\'s website and platform UI, handling design, implementation, and feature updates',
+        'Built real-time LLM response interfaces using Server-Sent Events (SSE), custom React hooks, and structured streaming logic',
+        'Designed interface flows in Figma and improved usability through refined layouts, interactions, and consistency',
+        'Developed reusable UI components and collaborated with backend teams to align APIs and ensure smooth feature integration',
+      ],
+    },
+    {
+      title: 'Technical Reviewer (Part-Time)',
+      company: 'Brototype',
+      period: 'Jul 2023 – Present',
+      location: 'Kochi, India',
+      current: true,
+      achievements: [
+        'Reviewed weekly student projects across frontend, backend, and full-stack modules',
+        'Provided clear feedback on code quality, problem-solving, and development practices to maintain consistency across batches',
       ],
     },
     {
@@ -39,10 +50,9 @@ const Experience: React.FC = () => {
       period: 'Nov 2022 – Jul 2023',
       location: 'Bengaluru, India',
       achievements: [
-        'Built responsive user interfaces for web and mobile, boosting user retention by 20%',
-        'Streamlined frontend–backend integration, ensuring smooth data flows and reduced load time by 35%',
-        'Ran structured UX testing loops, converting feedback into iterative design improvements',
-        'Optimized landing pages and product interfaces to support performance marketing, better lead conversion rate',
+        'Delivered responsive web and mobile interfaces while improving load performance via optimized layout and integration',
+        'Conducted structured UX feedback cycles with product/design teams, implementing changes that boosted user experience',
+        'Refined landing pages and key product screens for clearer flows and stronger engagement',
       ],
     },
     {
@@ -51,35 +61,33 @@ const Experience: React.FC = () => {
       period: 'Jul 2022 – Nov 2022',
       location: 'Bengaluru, India',
       achievements: [
-        'Delivered 4+ client-facing websites with cross-browser compatibility using React.js, Bootstrap, and CSS3',
-        'Led a tech team to build an e-learning platform with a social-media-style feed for user interaction, Zoom-integrated video conferencing, and separate modules for tutors and learners',
-        'Implemented responsive layouts and mobile-first design, reducing bounce rate by 22%',
-        'Collaborated directly with UI/UX teams, aligning design systems with frontend delivery',
+        'Built client websites using React and CSS, ensuring cross-browser and multi-device compatibility',
+        'Led frontend development for an e-learning platform with role-based access, social-style feeds, and integrated video sessions',
+        'Improved mobile usability by restructuring component behavior and layout responsiveness',
       ],
     },
   ];
 
   const training: Training[] = [
     {
-      title: 'Full-stack Developer Trainee',
+      title: 'Full Stack Bootcamp',
       company: 'Brototype',
       period: 'Nov 2021 – Jul 2022',
       location: 'Kochi, India',
       description: [
-        'Built full-stack applications using Python-JS, following clean code standards and modular design practices',
-        'Practiced DSA daily, solving 200+ problems to strengthen core logic-building and problem-solving skills',
-        'Trained in an intensive 12–14 hr/day environment under the guidance of industry experts',
+        'Completed a 10-month program covering Python, Django, REST APIs, React, SQL, DSA, cloud deployment, and production workflows',
+        'Built a full-stack MVP replacing Google-Sheet-based workflows with a role-based system for students, staff, and reviewers',
+        'Gained hands-on experience through daily evaluations, tight deadlines, and continuous project delivery',
       ],
     },
     {
-      title: 'Python Developer Trainee',
+      title: 'Python Trainee',
       company: 'iGuard',
       period: 'Nov 2021 – Jul 2022',
       location: 'Calicut, India',
       description: [
-        'Applied core Python programming concepts to build scripts and utilities, focusing on object-oriented design',
-        'Practiced and implemented data structures and algorithms in Python to solve real-world problems',
-        'Gained hands-on experience with Python libraries such as NumPy, Pandas, and Matplotlib',
+        'Developed internal scripts for workflow automation using Python, applying OOP concepts and algorithmic thinking',
+        'Performed small-scale data analysis using NumPy, Pandas, and Matplotlib for internal reporting',
       ],
     },
   ];

@@ -27,14 +27,14 @@ const Footer: React.FC = () => {
                 © {currentYear} Miras Mujeeb. All rights reserved.
               </p>
               <p className="text-text-secondary text-sm mt-1">
-                Frontend wizard exploring AI.
+                Software Engineer building real-time solutions.
               </p>
             </div>
 
             {/* Social Links */}
             <div className="flex items-center space-x-4 pt-4">
               <a
-                href="mailto:miras@example.com"
+                href="mailto:miraspk98@gmail.com"
                 className="p-2 rounded-lg hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
                 aria-label="Email"
               >

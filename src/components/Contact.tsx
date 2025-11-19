@@ -36,8 +36,8 @@ const Contact: React.FC = () => {
         </svg>
       ),
       label: 'Email',
-      value: 'miras@example.com',
-      link: 'mailto:miras@example.com',
+      value: 'miraspk98@gmail.com',
+      link: 'mailto:miraspk98@gmail.com',
     },
     {
       icon: (
