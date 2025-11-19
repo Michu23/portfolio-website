@@ -113,39 +113,6 @@
     pointer-events: none;
     z-index: -1;
   }
-
-  /* Rotating Hero Background Glows */
-  .rotating-glow-container {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: -1;
-  }
-
-  .rotating-glow-container::before,
-  .rotating-glow-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 856px;
-    width: 856px;
-    height: 856px;
-    filter: blur(235px);
-  }
-
-  .rotating-glow-container::before {
-    background: #8b5cf6;
-    animation: rotateGlow1 8s linear infinite;
-    z-index: -2;
-  }
-
-  .rotating-glow-container::after {
-    background: #ec4899;
-    animation: rotateGlow2 10s linear infinite;
-    z-index: -1;
-  }
 }
 
 @layer utilities {
@@ -174,23 +141,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary-dark);
-}
-
-/* Rotating Glow Animations */
-@keyframes rotateGlow1 {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(400px) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(400px) rotate(-360deg);
-  }
-}
-
-@keyframes rotateGlow2 {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(400px) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(-360deg) translateX(400px) rotate(360deg);
-  }
 }
