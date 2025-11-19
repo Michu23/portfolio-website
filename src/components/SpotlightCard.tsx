@@ -48,6 +48,7 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
           style={{
             opacity: isHovering ? 1 : 0,
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, ${spotlightColor}, transparent 40%)`,
+            transition: 'background 0.3s ease-out, opacity 0.3s ease-out',
           }}
         />
       )}
