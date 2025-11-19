@@ -9,6 +9,14 @@ interface TimelineItem {
 }
 
 const Timeline: React.FC = () => {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start center', 'end center'],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
   const timelineData: TimelineItem[] = [
     {
       year: '2024',
@@ -78,23 +86,18 @@ const Timeline: React.FC = () => {
           </div>
 
           {/* Timeline */}
-          <div className="relative flex flex-col items-center justify-center">
+          <div ref={timelineRef} className="relative flex flex-col items-center justify-center">
             {/* Vertical Line Container */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] md:-translate-x-1/2 overflow-hidden">
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] md:-translate-x-1/2">
               {/* Background line */}
               <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-accent/20 to-primary/20" />
               {/* Animated fill line */}
               <motion.div
-                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary via-accent to-primary"
+                className="absolute top-0 left-0 right-0 origin-top bg-gradient-to-b from-primary via-accent to-primary"
                 style={{
-                  height: '100vh',
-                  position: 'sticky',
-                  top: 0,
+                  height: lineHeight,
                 }}
               />
-              {/* Gradient overlays */}
-              <div className="absolute left-0 right-0 top-0 z-10 h-24 w-full bg-gradient-to-b from-background to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 z-10 h-24 w-full bg-gradient-to-t from-background to-transparent" />
             </div>
 
             {/* Timeline Items */}
