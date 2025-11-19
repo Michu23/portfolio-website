@@ -18,17 +18,25 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 4,
-        staggerChildren: 0.2,
+        delay: 2,
+        staggerChildren: 0.3,
         delayChildren: 0,
-        when: "beforeChildren",
+        when: "beforeChildren" as const,
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 50,
+        damping: 20,
+      },
+    },
   };
 
   return (
@@ -119,7 +127,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 5.5, duration: 0.8 }}
+        transition={{ delay: 5, duration: 1 }}
       >
         <svg
           className="w-6 h-6 text-primary"

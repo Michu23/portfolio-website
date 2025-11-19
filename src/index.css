@@ -147,12 +147,12 @@
 }
 
 .rotating-glow-container::before {
-  background: #8b5cf6;
+  background: rgba(139, 92, 246, 0.6);
   animation: rotateGlow1 8s linear infinite;
 }
 
 .rotating-glow-container::after {
-  background: #ec4899;
+  background: rgba(236, 72, 153, 0.6);
   animation: rotateGlow2 10s linear infinite;
 }
 
