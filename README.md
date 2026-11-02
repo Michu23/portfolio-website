@@ -28,6 +28,8 @@ All personal details, projects, experience, metrics and skills live in `src/data
 - `public/Miras_Mujeeb_Resume.pdf` is served by every "Download CV" and "Resume" link. Replace it to update the CV.
 - `public/portrait.webp` is the hero portrait: a cut-out photo with a transparent background, head and shoulders, about 1200px wide. Replace it with another cut-out to change the photo; if the file is missing, the hero renders without a portrait.
 
+- `public/projects/*.webp` are the project thumbnails, one per project, named in `src/data/profile.ts` (`image` field). Landscape screenshots around 1600x1000 work best. A project whose file is missing shows the styled "M." placeholder instead.
+
 ## Sections
 
 1. Hero: name, role, summary, three headline stats, CV download.

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ProjectImage from './ProjectImage';
 import { profile, projects, type ProjectCategory } from '../data/profile';
 import { ArrowRight, ArrowUpRight } from './Icons';
 import Reveal from './Reveal';
@@ -74,16 +75,7 @@ export default function Work() {
               <Reveal key={project.title} as="article" className="project-card" delay={(i % 3) * 0.08}>
                 <Open className="project-open" {...openProps}>
                   <div className="project-picture">
-                    <span className="media-image">
-                      <span className="image-fallback">
-                        <span className="display">M.</span>
-                        <span className="fallback-stack" aria-hidden>
-                          {project.stack.map((s) => (
-                            <span key={s}>{s}</span>
-                          ))}
-                        </span>
-                      </span>
-                    </span>
+                    <ProjectImage src={project.image} alt={`${project.title} screenshot`} stack={project.stack} />
                   </div>
                   <span className="project-type">{project.type}</span>
                   {project.link && (
