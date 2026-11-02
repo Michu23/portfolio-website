@@ -47,7 +47,7 @@ export default function Hero() {
       {portraitOk && (
         <motion.div className="hero-portrait" style={{ y: portraitY }}>
           <img
-            src="/portrait.webp"
+            src={profile.portraitUrl}
             alt=""
             fetchPriority="high"
             onError={() => setPortraitOk(false)}
