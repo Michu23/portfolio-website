@@ -30,6 +30,7 @@ All personal details, projects, experience, metrics and skills live in `src/data
 ## Assets
 
 - `public/Miras_Mujeeb_Resume.pdf` is served by every "Download CV" and "Resume" link. Replace it to update the CV.
+- `public/og.png` is the 1200x630 link-preview banner used by Open Graph and Twitter cards. Replace it with another image of the same size and name to change the preview.
 - `public/portrait.webp` is the hero portrait: a cut-out photo with a transparent background, head and shoulders, about 1200px wide. Replace it with another cut-out to change the photo; if the file is missing, the hero renders without a portrait.
 
 ## Sections
@@ -44,5 +45,5 @@ All personal details, projects, experience, metrics and skills live in `src/data
 ## Motion, sound and loading
 
 - Motion is on by default: reveal animations, hero and section parallax, and the accordion transitions. The "Motion" toggle in the header switches it off and the choice is remembered in the browser.
-- Background music is on by default and starts on the visitor's first click, tap, key press or scroll (browsers block audio before a gesture). The "Sound" toggle switches it off. By default the soundtrack is a generative ambient synth built with the Web Audio API, so no audio file ships. To use a real track, drop a looping file in `public/` and set `musicUrl` in `src/data/profile.ts`.
+- Background music is off by default. The "Sound" toggle in the header switches it on, and the choice is remembered. Once on, it starts on the visitor's next click, tap, key press or scroll (browsers block audio before a gesture). By default the soundtrack is a generative ambient synth built with the Web Audio API, so no audio file ships. To use a real track, drop a looping file in `public/` and set `musicUrl` in `src/data/profile.ts`.
 - A full-screen loader with a counter and progress line shows on first paint until fonts and assets are ready, then lifts to reveal the hero.
