@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { profile } from '../data/profile';
 
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Blogs', href: '#blogs' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -47,7 +48,7 @@ const Header: React.FC = () => {
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white text-xl shadow-lg group-hover:shadow-primary/50 transition-shadow">
               M
             </div>
-            <span className="hidden sm:block font-semibold text-lg">Miras Mujeeb</span>
+            <span className="hidden sm:block font-semibold text-lg">{profile.name}</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -105,7 +106,8 @@ const Header: React.FC = () => {
 
             {/* Download CV Button */}
             <a
-              href="#"
+              href={profile.resumeUrl}
+              download="Miras_Mujeeb_Resume.pdf"
               className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-lg hover:shadow-primary/50 transition-all duration-200"
             >
               Download CV
@@ -158,7 +160,8 @@ const Header: React.FC = () => {
                 </a>
               ))}
               <a
-                href="#"
+                href={profile.resumeUrl}
+                download="Miras_Mujeeb_Resume.pdf"
                 className="mx-4 text-center px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-lg hover:shadow-primary/50 transition-all duration-200"
               >
                 Download CV

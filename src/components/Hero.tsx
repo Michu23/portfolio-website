@@ -1,15 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { profile } from '../data/profile';
 
 const Hero: React.FC = () => {
   const techStack = [
-    'React',
     'TypeScript',
+    'React',
+    'Node.js',
     'Python',
-    'Django',
-    'Kubernetes',
-    'Docker',
-    'Git',
+    'AWS Serverless',
+    'n8n',
+    'Flutter',
     'Figma',
   ];
 
@@ -18,10 +19,10 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        delay: 2,
-        staggerChildren: 0.3,
+        delay: 0.3,
+        staggerChildren: 0.2,
         delayChildren: 0,
-        when: "beforeChildren" as const,
+        when: 'beforeChildren' as const,
       },
     },
   };
@@ -32,7 +33,7 @@ const Hero: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring" as const,
+        type: 'spring' as const,
         stiffness: 50,
         damping: 20,
       },
@@ -53,9 +54,9 @@ const Hero: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Availability Badge */}
           <motion.div variants={itemVariants}>
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8 animate-pulse">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              <span className="text-green-500 text-sm font-medium">Available for freelance</span>
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8">
+              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-green-500 text-sm font-medium">{profile.availability}</span>
             </div>
           </motion.div>
 
@@ -65,14 +66,14 @@ const Hero: React.FC = () => {
             variants={itemVariants}
           >
             <span className="block mb-2">I'm a</span>
-            <span className="gradient-text">software developer</span>
+            <span className="gradient-text">forward deployed engineer</span>
           </motion.h1>
 
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary"
             variants={itemVariants}
           >
-            building real-time interfaces and full-stack solutions.
+            turning ambiguous business problems into production systems.
           </motion.h2>
 
           {/* Description */}
@@ -80,9 +81,26 @@ const Hero: React.FC = () => {
             className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed"
             variants={itemVariants}
           >
-            Software engineer with hands-on experience in front-end development, real-time interfaces, and cross-functional product work.
-            Strong focus on structured execution, clarity in communication, and continuous improvement.
-            Currently at <span className="text-primary font-semibold">Dview Technologies</span> as a founding team member.
+            I embed with clients, learn how their business works, then scope, build, ship and maintain the
+            workflows, integrations and automation they can run themselves. Co-founder of{' '}
+            <a
+              href={profile.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-semibold hover:text-accent transition-colors"
+            >
+              Azolute AI
+            </a>{' '}
+            and founder of{' '}
+            <a
+              href="https://clashcwl.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary font-semibold hover:text-accent transition-colors"
+            >
+              ClashCWL
+            </a>
+            .
           </motion.p>
 
           {/* CTA Buttons */}
@@ -91,7 +109,8 @@ const Hero: React.FC = () => {
             variants={itemVariants}
           >
             <a
-              href="#"
+              href={profile.resumeUrl}
+              download="Miras_Mujeeb_Resume.pdf"
               className="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 transform hover:-translate-y-1"
             >
               Download CV
@@ -106,13 +125,12 @@ const Hero: React.FC = () => {
 
           {/* Tech Stack */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <p className="text-text-secondary font-medium">Building amazing things with</p>
+            <p className="text-text-secondary font-medium">Building and shipping with</p>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              {techStack.map((tech, index) => (
+              {techStack.map((tech) => (
                 <span
                   key={tech}
                   className="px-4 py-2 rounded-lg bg-background-secondary border border-primary/20 text-sm font-medium hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-default"
-                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {tech}
                 </span>
@@ -127,20 +145,10 @@ const Hero: React.FC = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 5, duration: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
       >
-        <svg
-          className="w-6 h-6 text-primary"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
+        <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>
     </section>

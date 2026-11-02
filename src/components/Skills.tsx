@@ -10,57 +10,43 @@ interface SkillCategory {
 const Skills: React.FC = () => {
   const skillCategories: SkillCategory[] = [
     {
-      title: 'Languages',
+      title: 'AI & Agents',
+      icon: '🤖',
+      skills: ['Claude API', 'OpenAI', 'MCP servers', 'AI agents', 'Prompt engineering', 'LLM-search optimisation', 'Claude Code'],
+    },
+    {
+      title: 'Full-stack',
       icon: '💻',
-      skills: ['JavaScript', 'TypeScript', 'Python', 'Java (fundamentals)'],
+      skills: ['TypeScript', 'JavaScript', 'React', 'Vite', 'Next.js', 'Node.js', 'Python', 'Django', 'Flutter', 'PostgreSQL', 'Supabase'],
     },
     {
-      title: 'Frameworks & Backend',
-      icon: '⚛️',
-      skills: ['React', 'Redux Toolkit', 'Django', 'Kubernetes', 'ArgoCD'],
+      title: 'Cloud & DevOps',
+      icon: '☁️',
+      skills: ['AWS Lambda', 'DynamoDB', 'S3 + CloudFront', 'EventBridge', 'SES', 'GitHub Actions CI/CD', 'Docker', 'Kubernetes'],
     },
     {
-      title: 'Tools & Technologies',
-      icon: '🛠️',
-      skills: [
-        'Git',
-        'GitHub',
-        'Docker',
-        'CI/CD pipelines',
-        'Postman',
-        'Webpack',
-      ],
-    },
-    {
-      title: 'Other Technical Skills',
-      icon: '🎨',
-      skills: [
-        'API Integration',
-        'Debugging mindset',
-        'Figma (UI flows)',
-        'Structured UX patterns',
-      ],
+      title: 'Integrations & Automation',
+      icon: '🔌',
+      skills: ['n8n', 'REST APIs', 'Discord API & OAuth', 'Google Identity', 'Paddle', 'PayPal', 'Razorpay', 'Twilio'],
     },
   ];
 
   const coreSkills = [
-    'Structured execution',
-    'Clear communication',
-    'Continuous improvement',
-    'Real-time interfaces',
-    'Server-Sent Events',
-    'API integration',
-    'Cross-functional collaboration',
-    'Product-level thinking',
+    'Client discovery',
+    'Requirements & scoping',
+    'Solution design',
+    'Deployment & maintenance',
+    'Reusable tooling',
+    'Product thinking',
+    'Figma & UI/UX',
+    'After Effects & Lottie',
   ];
 
   return (
     <section id="skills" className="py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-            All of my Technical Knowledge
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">All of my Technical Knowledge</h2>
           <p className="text-text-secondary text-center mb-12 text-lg">in one place</p>
 
           {/* Technical Skills Grid */}
@@ -71,59 +57,51 @@ const Skills: React.FC = () => {
                 className="card-gradient rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <div className="p-6">
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-bold mb-4">{category.title}</h3>
-                <ul className="space-y-2">
-                  {category.skills.map((skill, i) => (
-                    <li key={i} className="flex items-start space-x-2">
-                      <svg
-                        className="w-4 h-4 text-primary flex-shrink-0 mt-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className="text-text-secondary text-sm">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <div className="text-4xl mb-4">{category.icon}</div>
+                  <h3 className="text-xl font-bold mb-4">{category.title}</h3>
+                  <ul className="space-y-2">
+                    {category.skills.map((skill, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <svg className="w-4 h-4 text-primary flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span className="text-text-secondary text-sm">{skill}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </SpotlightCard>
             ))}
           </div>
 
-          {/* Core Skills & Expertise */}
+          {/* Delivery & Product Skills */}
           <SpotlightCard className="card-gradient rounded-xl">
             <div className="p-8">
-            <h3 className="text-2xl font-bold mb-6 text-center">Core Skills & Expertise</h3>
-            <p className="text-text-secondary text-center mb-8">
-              Key competencies that drive my development approach
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {coreSkills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors"
-                >
-                  <svg
-                    className="w-5 h-5 text-accent flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+              <h3 className="text-2xl font-bold mb-6 text-center">Delivery & Product</h3>
+              <p className="text-text-secondary text-center mb-8">
+                How I take a client from first conversation to a system they can run themselves
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {coreSkills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-3 p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-text-secondary font-medium">{skill}</span>
-                </div>
-              ))}
-            </div>
+                    <svg className="w-5 h-5 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-text-secondary font-medium">{skill}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </SpotlightCard>
         </div>
