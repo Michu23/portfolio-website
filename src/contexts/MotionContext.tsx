@@ -7,15 +7,13 @@ interface MotionContextType {
 
 const MotionContext = createContext<MotionContextType | undefined>(undefined);
 
+// Motion is on by default. Visitors can switch it off with the header toggle; the choice is remembered.
 const readInitial = (): boolean => {
   try {
-    const saved = localStorage.getItem('motion');
-    if (saved === 'on') return true;
-    if (saved === 'off') return false;
+    return localStorage.getItem('motion') !== 'off';
   } catch {
-    /* storage unavailable */
+    return true;
   }
-  return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 };
 
 export function MotionProvider({ children }: { children: ReactNode }) {

@@ -37,4 +37,8 @@ All personal details, projects, experience, metrics and skills live in `src/data
 5. Journey: expandable experience rows and milestones.
 6. Contact: links, a flagship card and a project brief form that opens a prefilled email.
 
-A "Motion on/off" toggle in the header disables animations; the site also honours `prefers-reduced-motion`.
+## Motion, sound and loading
+
+- Motion is on by default: reveal animations, hero and section parallax, and the accordion transitions. The "Motion" toggle in the header switches it off and the choice is remembered in the browser.
+- Background music is on by default and starts on the visitor's first click, tap, key press or scroll (browsers block audio before a gesture). The "Sound" toggle switches it off. By default the soundtrack is a generative ambient synth built with the Web Audio API, so no audio file ships. To use a real track, drop a looping file in `public/` and set `musicUrl` in `src/data/profile.ts`.
+- A full-screen loader with a counter and progress line shows on first paint until fonts and assets are ready, then lifts to reveal the hero.

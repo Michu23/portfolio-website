@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { profile } from '../data/profile';
 import { ArrowUpRight, Globe, Linkedin, Mail, Pin, Play, Plus } from './Icons';
 import Reveal from './Reveal';
+import Parallax from './Parallax';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', type: 'Automation & integrations', message: '' });
@@ -73,6 +74,7 @@ export default function Contact() {
         </Reveal>
 
         <Reveal className="contact-reel" delay={0.2}>
+          <Parallax speed={-0.3}>
           <a href={profile.flagship.url} target="_blank" rel="noopener noreferrer" aria-label="Visit ClashCWL">
             <span className="reel-screen">
               <span className="reel-screen-top">
@@ -92,6 +94,7 @@ export default function Contact() {
             </span>
             <span className="reel-caption">Press play. See it in production.</span>
           </a>
+          </Parallax>
         </Reveal>
       </div>
 

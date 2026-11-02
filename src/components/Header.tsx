@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useMotion } from '../contexts/MotionContext';
+import { useSound } from '../contexts/SoundContext';
 import { profile } from '../data/profile';
-import { ArrowUpRight, Close, Menu, MotionIcon } from './Icons';
+import { ArrowUpRight, Close, Menu, MotionIcon, SoundIcon } from './Icons';
 
 const navLinks = [
   { name: 'Work', href: '#work', id: 'work' },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function Header() {
   const { motion: motionOn, toggleMotion } = useMotion();
+  const { sound, playing, toggleSound } = useSound();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
   const { scrollYProgress } = useScroll();
@@ -62,6 +64,16 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
+          <button
+            type="button"
+            className={`motion-toggle sound-toggle${playing ? ' is-playing' : ''}`}
+            onClick={toggleSound}
+            aria-pressed={sound}
+            title="Toggle background music"
+          >
+            <SoundIcon on={sound} />
+            <span>{sound ? 'Sound on' : 'Sound off'}</span>
+          </button>
           <button
             type="button"
             className="motion-toggle"

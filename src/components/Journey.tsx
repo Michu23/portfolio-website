@@ -4,6 +4,7 @@ import { useMotion } from '../contexts/MotionContext';
 import { jobs, milestones, profile } from '../data/profile';
 import { ArrowUpRight, Download, Minus, Plus } from './Icons';
 import Reveal from './Reveal';
+import Parallax from './Parallax';
 
 export default function Journey() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -75,10 +76,12 @@ export default function Journey() {
 
         <Reveal className="awards-panel" delay={0.1}>
           <p className="eyebrow">A few milestones</p>
-          <h3 className="display">
-            Small steps.
-            <span className="accent">Big shifts.</span>
-          </h3>
+          <Parallax speed={0.3}>
+            <h3 className="display">
+              Small steps.
+              <span className="accent">Big shifts.</span>
+            </h3>
+          </Parallax>
           <div className="award-list">
             {milestones.map((m, i) => {
               const Row = m.link ? 'a' : 'div';

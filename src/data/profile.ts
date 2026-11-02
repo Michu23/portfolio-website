@@ -14,6 +14,8 @@ export const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}Miras_Mujeeb_Resume.pdf`,
   portraitUrl: `${import.meta.env.BASE_URL}portrait.webp`,
   languages: ['English', 'Malayalam', 'Hindi'],
+  /** Optional looping track under public/, e.g. `${import.meta.env.BASE_URL}ambient.mp3`. Empty = generative ambient synth. */
+  musicUrl: '',
   flagship: { name: 'ClashCWL', url: 'https://clashcwl.com' },
   legends: { name: 'Legend Smash', url: 'https://legends.clashcwl.com' },
 };

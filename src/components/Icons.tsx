@@ -92,3 +92,9 @@ export const Laurel = (p: SVGProps<SVGSVGElement>) => (
     <path d="M12 46c-6-4-9-10-9-18 2 1 4 3 5 6 0-4-1-8 1-12 2 2 3 5 3 9 1-4 3-7 6-9 0 4-1 8-3 11 2-2 4-4 7-5-1 8-5 14-10 18Z" />
   </svg>
 );
+export const SoundIcon = ({ on, ...p }: SVGProps<SVGSVGElement> & { on: boolean }) => (
+  <svg {...base(p)} width={14} height={14}>
+    <path d="M4 10v4h3l4 3V7L7 10H4z" />
+    {on ? <path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a8 8 0 0 1 0 11" /> : <path d="M15 9l5 6M20 9l-5 6" />}
+  </svg>
+);
