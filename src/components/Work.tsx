@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ProjectImage from './ProjectImage';
 import { profile, projects, type ProjectCategory } from '../data/profile';
 import { ArrowRight, ArrowUpRight } from './Icons';
 import Reveal from './Reveal';
@@ -14,6 +13,8 @@ const partners = [
   { name: 'Fabits', role: 'UI/UX · 2022–23' },
   { name: 'Bask', role: 'Full stack · 2022' },
 ];
+
+const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, '');
 
 export default function Work() {
   const [filter, setFilter] = useState<'All' | ProjectCategory>('All');
@@ -64,38 +65,40 @@ export default function Work() {
           <p>Nothing here yet.</p>
         </div>
       ) : (
-        <div className="project-grid">
+        <div className="project-list">
           {visible.map((project, i) => {
             const index = String(projects.indexOf(project) + 1).padStart(2, '0');
-            const Open = project.link ? 'a' : 'div';
-            const openProps = project.link
-              ? { href: project.link, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `Open ${project.title}` }
+            const Row = project.link ? 'a' : 'div';
+            const rowProps = project.link
+              ? { href: project.link, target: '_blank', rel: 'noopener noreferrer', 'aria-label': `${project.title}, opens ${hostOf(project.link)}` }
               : {};
             return (
-              <Reveal key={project.title} as="article" className="project-card" delay={(i % 3) * 0.08}>
-                <Open className="project-open" {...openProps}>
-                  <div className="project-picture">
-                    <ProjectImage src={project.image} alt={`${project.title} screenshot`} stack={project.stack} />
-                  </div>
-                  <span className="project-type">{project.type}</span>
-                  {project.link && (
-                    <span className="project-hover" aria-hidden>
-                      <ArrowUpRight />
-                    </span>
-                  )}
-                  <span className="project-frame" aria-hidden />
-                </Open>
-                <div className="project-caption">
+              <Reveal key={project.title} as="article" className="project-row" delay={Math.min(i, 4) * 0.05}>
+                <Row className="project-row-inner" {...rowProps}>
                   <span className="project-number display">{index}</span>
-                  <span>
+                  <span className="project-main">
                     <h3>{project.title}</h3>
                     <span className="project-category">
-                      {project.category} / {project.year}
+                      {project.category} / {project.year} · {project.type}
                     </span>
                   </span>
-                  {project.link && <ArrowUpRight />}
-                </div>
-                <p className="project-desc">{project.description}</p>
+                  <p className="project-desc">{project.description}</p>
+                  <span className="project-stack" aria-label="Stack">
+                    {project.stack.map((s) => (
+                      <span key={s}>{s}</span>
+                    ))}
+                  </span>
+                  <span className={`project-link${project.link ? '' : ' is-private'}`}>
+                    {project.link ? (
+                      <>
+                        {hostOf(project.link)}
+                        <ArrowUpRight />
+                      </>
+                    ) : (
+                      'Private build'
+                    )}
+                  </span>
+                </Row>
               </Reveal>
             );
           })}

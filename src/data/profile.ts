@@ -14,6 +14,8 @@ export const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}Miras_Mujeeb_Resume.pdf`,
   portraitUrl: `${import.meta.env.BASE_URL}portrait.webp`,
   languages: ['English', 'Malayalam', 'Hindi'],
+  /** Optional looping track under public/, e.g. `${import.meta.env.BASE_URL}ambient.mp3`. Empty = generative ambient synth. */
+  musicUrl: '',
   flagship: { name: 'ClashCWL', url: 'https://clashcwl.com' },
   legends: { name: 'Legend Smash', url: 'https://legends.clashcwl.com' },
 };
@@ -28,8 +30,6 @@ export interface Project {
   description: string;
   stack: string[];
   link?: string;
-  /** Path under public/, e.g. projects/clashcwl.webp. Falls back to the M. placeholder when missing. */
-  image?: string;
 }
 
 export const projects: Project[] = [
@@ -42,7 +42,6 @@ export const projects: Project[] = [
       'Founder and sole engineer. Three branded sites from one multi-tenant React codebase on an event-driven serverless AWS backend with 50+ modules and 500+ automated tests. Automated scouting saves clan leaders 10 to 15 hours a week.',
     stack: ['React', 'TypeScript', 'AWS Lambda', 'DynamoDB', 'EventBridge'],
     link: 'https://clashcwl.com',
-    image: 'projects/clashcwl.webp',
   },
   {
     title: 'TH18 Base Builder + MCP Server',
@@ -53,7 +52,6 @@ export const projects: Project[] = [
       '44x44 grid editor with a rule engine, exposed through an MCP server so an LLM can draft, validate and save bases. Part of the ClashCWL platform.',
     stack: ['MCP', 'Claude API', 'TypeScript'],
     link: 'https://legends.clashcwl.com',
-    image: 'projects/legend-smash.webp',
   },
   {
     title: 'Billing & Discord Integrations',
@@ -64,7 +62,6 @@ export const projects: Project[] = [
       'Four plans with free trials, weekly-resetting credits, an append-only ledger wallet and country routing across Paddle, PayPal and Razorpay. Discord app with OAuth, slash commands, role linking and real-time DM alerts.',
     stack: ['Paddle', 'PayPal', 'Razorpay', 'Discord API'],
     link: 'https://clashcwl.com',
-    image: 'projects/billing.webp',
   },
   {
     title: 'RetroBooth',
@@ -74,7 +71,6 @@ export const projects: Project[] = [
     description:
       'Souvenir photo app for a client in Germany that turns HTML templates into printed keepsakes. Scoped, built and shipped in two weeks.',
     stack: ['Flutter', 'HTML templates'],
-    image: 'projects/retrobooth.webp',
   },
   {
     title: 'AI Website Support Agent',
@@ -84,7 +80,6 @@ export const projects: Project[] = [
     description:
       'n8n workflow automation for clients: an AI support agent that answers website visitors, plus recurring client patterns turned into reusable tooling so each deployment ships faster.',
     stack: ['n8n', 'OpenAI', 'Claude API'],
-    image: 'projects/support-agent.webp',
   },
   {
     title: 'Mirage (Dsense) Streaming UI',
@@ -94,7 +89,6 @@ export const projects: Project[] = [
     description:
       'Real-time LLM streaming interfaces for an enterprise data analytics and AI chat platform at Dview Technologies, using Server-Sent Events and custom React hooks. Led the front end.',
     stack: ['React', 'Server-Sent Events', 'Custom hooks'],
-    image: 'projects/mirage.webp',
   },
 ];
 

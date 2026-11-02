@@ -14,9 +14,12 @@ export default function Hero() {
   const { motion: motionOn } = useMotion();
   const [portraitOk, setPortraitOk] = useState(true);
   const { scrollY } = useScroll();
-  const titleScale = useTransform(scrollY, [0, 600], [1, motionOn ? 1.08 : 1]);
-  const titleOpacity = useTransform(scrollY, [0, 500], [1, motionOn ? 0.35 : 1]);
-  const portraitY = useTransform(scrollY, [0, 600], [0, motionOn ? 60 : 0]);
+  const titleScale = useTransform(scrollY, [0, 700], [1, motionOn ? 1.1 : 1]);
+  const titleY = useTransform(scrollY, [0, 700], [0, motionOn ? -140 : 0]);
+  const titleOpacity = useTransform(scrollY, [0, 600], [1, motionOn ? 0.25 : 1]);
+  const portraitY = useTransform(scrollY, [0, 700], [0, motionOn ? 110 : 0]);
+  const introY = useTransform(scrollY, [0, 700], [0, motionOn ? 50 : 0]);
+  const sideY = useTransform(scrollY, [0, 700], [0, motionOn ? 30 : 0]);
 
   const fadeUp = (delay: number) =>
     motionOn
@@ -40,7 +43,7 @@ export default function Hero() {
         </span>
       </div>
 
-      <motion.div className="hero-title display" style={{ scale: titleScale, opacity: titleOpacity }} aria-hidden>
+      <motion.div className="hero-title display" style={{ scale: titleScale, y: titleY, opacity: titleOpacity }} aria-hidden>
         PORTFOLIO
       </motion.div>
 
@@ -55,7 +58,7 @@ export default function Hero() {
         </motion.div>
       )}
 
-      <div className="hero-intro">
+      <motion.div className="hero-intro" style={{ y: introY }}>
         <motion.p className="handwriting" {...fadeUp(0.1)}>
           Hello, I’m
         </motion.p>
@@ -81,9 +84,9 @@ export default function Hero() {
           <Pin width={13} height={13} />
           {profile.location}
         </motion.span>
-      </div>
+      </motion.div>
 
-      <motion.div className="hero-side" {...fadeUp(0.5)}>
+      <motion.div className="hero-side" style={{ y: sideY }} {...fadeUp(0.5)}>
         <div className="hero-manifesto">
           <span className="crosshair" aria-hidden>
             ✳

@@ -28,15 +28,17 @@ All personal details, projects, experience, metrics and skills live in `src/data
 - `public/Miras_Mujeeb_Resume.pdf` is served by every "Download CV" and "Resume" link. Replace it to update the CV.
 - `public/portrait.webp` is the hero portrait: a cut-out photo with a transparent background, head and shoulders, about 1200px wide. Replace it with another cut-out to change the photo; if the file is missing, the hero renders without a portrait.
 
-- `public/projects/*.webp` are the project thumbnails, one per project, named in `src/data/profile.ts` (`image` field). Landscape screenshots around 1600x1000 work best. A project whose file is missing shows the styled "M." placeholder instead.
-
 ## Sections
 
 1. Hero: name, role, summary, three headline stats, CV download.
-2. Selected work: filterable project grid plus the teams and products worked with.
+2. Selected work: filterable project list with links, plus the teams and products worked with.
 3. Impact: production metrics from ClashCWL, Azolute AI and Dview.
 4. About: education, skills, delivery process and a signature quote panel.
 5. Journey: expandable experience rows and milestones.
 6. Contact: links, a flagship card and a project brief form that opens a prefilled email.
 
-A "Motion on/off" toggle in the header disables animations; the site also honours `prefers-reduced-motion`.
+## Motion, sound and loading
+
+- Motion is on by default: reveal animations, hero and section parallax, and the accordion transitions. The "Motion" toggle in the header switches it off and the choice is remembered in the browser.
+- Background music is on by default and starts on the visitor's first click, tap, key press or scroll (browsers block audio before a gesture). The "Sound" toggle switches it off. By default the soundtrack is a generative ambient synth built with the Web Audio API, so no audio file ships. To use a real track, drop a looping file in `public/` and set `musicUrl` in `src/data/profile.ts`.
+- A full-screen loader with a counter and progress line shows on first paint until fonts and assets are ready, then lifts to reveal the hero.

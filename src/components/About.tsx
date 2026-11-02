@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { process, profile, skillGroups } from '../data/profile';
 import Reveal from './Reveal';
+import Parallax from './Parallax';
 
 export default function About() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -83,6 +84,7 @@ export default function About() {
           <span className="quote-mark display" aria-hidden>
             “
           </span>
+          <Parallax speed={0.25}>
           <blockquote>
             From client discovery
             <br />
@@ -95,6 +97,7 @@ export default function About() {
             </em>
           </blockquote>
           <span className="handwriting">{profile.firstName}</span>
+          </Parallax>
           <div className="quote-bottom">
             <span>
               Let’s remove

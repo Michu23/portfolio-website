@@ -1,6 +1,7 @@
 import { impact, profile } from '../data/profile';
 import { ArrowUpRight, Laurel } from './Icons';
 import Reveal from './Reveal';
+import Parallax from './Parallax';
 
 export default function Impact() {
   return (
@@ -11,14 +12,16 @@ export default function Impact() {
           The work.
           <span className="accent">The results.</span>
         </h2>
-        <div className="award-total" aria-label="500 plus automated tests">
-          <Laurel />
-          <span className="display">
-            500<span>+</span>
-          </span>
-          <Laurel style={{ transform: 'scaleX(-1)' }} />
-          <span className="award-total-label">Automated tests</span>
-        </div>
+        <Parallax speed={0.35}>
+          <div className="award-total" aria-label="500 plus automated tests">
+            <Laurel />
+            <span className="display">
+              500<span>+</span>
+            </span>
+            <Laurel style={{ transform: 'scaleX(-1)' }} />
+            <span className="award-total-label">Automated tests</span>
+          </div>
+        </Parallax>
         <p>
           Numbers from production, not a pitch deck.
           <br />
