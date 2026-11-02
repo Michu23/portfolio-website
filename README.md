@@ -19,6 +19,10 @@ npm run build
 npm run lint
 ```
 
+## Deploy
+
+Hosted on Netlify, connected to this repository. Pushing to the deploy branch triggers a build (`npm run build`) and publishes `dist/`. No other deployment setup is needed.
+
 ## Content
 
 All personal details, projects, experience, metrics and skills live in `src/data/profile.ts`. Edit that file to update the site; the components read from it.
