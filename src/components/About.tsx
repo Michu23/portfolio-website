@@ -1,76 +1,112 @@
-import React from 'react';
-import SpotlightCard from './SpotlightCard';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { process, profile, skillGroups } from '../data/profile';
+import Reveal from './Reveal';
 
-const About: React.FC = () => {
+export default function About() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 80%', 'end 60%'] });
+  const fill = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section id="about" className="py-20 relative section-glow">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Profile Image */}
-            <div className="relative">
-              <div className="relative w-full max-w-md mx-auto">
-                {/* Gradient Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl blur-2xl opacity-30 animate-pulse"></div>
+    <section id="about" className="about section-wrap" aria-labelledby="about-title">
+      <Reveal>
+        <div className="about-lead">
+          <div>
+            <span className="eyebrow">02 / Behind the code</span>
+            <h2 id="about-title" className="display">
+              Not just code.
+              <br />
+              A system that <span className="accent">runs itself.</span>
+            </h2>
+          </div>
+          <p>
+            I’m {profile.firstName}, a forward deployed software engineer from {profile.location}. I think like an
+            engineer and a product manager: learn how a business works first, then build the workflows,
+            integrations and automation that let it run and grow with minimal people and spend.
+          </p>
+        </div>
+      </Reveal>
 
-                {/* Profile Card */}
-                <SpotlightCard className="card-gradient rounded-2xl backdrop-blur-sm">
-                  <div className="p-8">
-                    <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-8xl font-bold text-primary">
-                      M
-                    </div>
-                  </div>
-                </SpotlightCard>
+      <div className="studio-grid">
+        <Reveal className="education-panel">
+          <h3 className="panel-heading">Education &amp; skills</h3>
+          <p className="eyebrow accent">Education</p>
+          <div className="education-row">
+            <strong>BSc Computer Science</strong>
+            <span>2017 – 2020</span>
+            <p>University of Calicut.</p>
+          </div>
+          <div className="education-row">
+            <strong>Full Stack Bootcamp</strong>
+            <span>2021 – 2022</span>
+            <p>Brototype, Kochi. 10 months of Python, Django, REST APIs, React, SQL, DSA and cloud deployment.</p>
+          </div>
+          <div className="education-row">
+            <strong>Languages</strong>
+            <p>{profile.languages.join(' · ')}</p>
+          </div>
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <p className="eyebrow accent skills-heading">{group.label}</p>
+              <div className="skill-tags">
+                {group.tags.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
               </div>
             </div>
+          ))}
+        </Reveal>
 
-            {/* About Content */}
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                  Hey! I'm <span className="gradient-text">Miras</span>,
-                </h2>
-                <h3 className="text-2xl md:text-3xl font-semibold text-text-secondary mb-6">
-                  a software engineer building real-time solutions.
-                </h3>
-              </div>
-
-              <div className="space-y-4 text-lg text-text-secondary leading-relaxed">
-                <p>
-                  Software engineer with a computer science background and hands-on experience in front-end development,
-                  real-time interfaces, and cross-functional product work. I built streaming interfaces for large language
-                  model responses at Dview and collaborated closely with backend teams to deliver coordinated features.
-                </p>
-
-                <p>
-                  Strong focus on structured execution, clarity in communication, and continuous improvement.
-                  Currently working as a founding team member at Dview Technologies while also reviewing student
-                  projects at Brototype. Aspiring to pursue a Master's in Germany (Summer 2026) and highly aligned
-                  with programs like Master@IBM.
-                </p>
-              </div>
-
-              {/* Key Skills */}
-              <div className="pt-6">
-                <h4 className="text-xl font-semibold mb-4">Core Competencies</h4>
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
-                    Real-time Interfaces
-                  </span>
-                  <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
-                    API Integration
-                  </span>
-                  <span className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all">
-                    Structured Execution
-                  </span>
+        <Reveal className="process-panel" delay={0.1}>
+          <div>
+            <h3 className="panel-heading">From first call to production</h3>
+          </div>
+          <div className="process-list" ref={trackRef}>
+            <div className="process-track" aria-hidden>
+              <motion.div style={{ scaleY: fill }} />
+            </div>
+            {process.map((step, i) => (
+              <div className="process-row" key={step.title}>
+                <span className="process-num display">{String(i + 1).padStart(2, '0')}</span>
+                <span className="process-node" aria-hidden />
+                <div>
+                  <h4>{step.title}</h4>
+                  <p>{step.text}</p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal className="quote-panel" delay={0.2}>
+          <span className="quote-mark display" aria-hidden>
+            “
+          </span>
+          <blockquote>
+            From client discovery
+            <br />
+            and scoping,
+            <br />
+            <em>
+              to a system they
+              <br />
+              can run themselves.
+            </em>
+          </blockquote>
+          <span className="handwriting">{profile.firstName}</span>
+          <div className="quote-bottom">
+            <span>
+              Let’s remove
+              <br />
+              the manual work.
+            </span>
+            <span className="quote-symbol" aria-hidden>
+              ✳
+            </span>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
-};
-
-export default About;
+}

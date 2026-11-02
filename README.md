@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Miras Mujeeb · Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for Miras Mujeeb, Forward Deployed Software Engineer and co-founder of Azolute AI.
 
-Currently, two official plugins are available:
+Built with React 19, TypeScript, Vite and Framer Motion. Dark, cinematic layout: Anton display type, Manrope body text, Caveat handwriting, red accent on near-black, hairline dividers and numbered sections.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Develop
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+```bash
+npm run lint
+```
+
+## Content
+
+All personal details, projects, experience, metrics and skills live in `src/data/profile.ts`. Edit that file to update the site; the components read from it.
+
+## Assets
+
+- `public/Miras_Mujeeb_Resume.pdf` is served by every "Download CV" and "Resume" link. Replace it to update the CV.
+- `public/portrait.webp` is the hero portrait: a cut-out photo with a transparent background, head and shoulders, about 1200px wide. Replace it with another cut-out to change the photo; if the file is missing, the hero renders without a portrait.
+
+## Sections
+
+1. Hero: name, role, summary, three headline stats, CV download.
+2. Selected work: filterable project grid plus the teams and products worked with.
+3. Impact: production metrics from ClashCWL, Azolute AI and Dview.
+4. About: education, skills, delivery process and a signature quote panel.
+5. Journey: expandable experience rows and milestones.
+6. Contact: links, a flagship card and a project brief form that opens a prefilled email.
+
+A "Motion on/off" toggle in the header disables animations; the site also honours `prefers-reduced-motion`.
