@@ -1,158 +1,137 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useMotion } from '../contexts/MotionContext';
 import { profile } from '../data/profile';
+import { ArrowDown, Download, Pin, Play } from './Icons';
 
-const Hero: React.FC = () => {
-  const techStack = [
-    'TypeScript',
-    'React',
-    'Node.js',
-    'Python',
-    'AWS Serverless',
-    'n8n',
-    'Flutter',
-    'Figma',
-  ];
+const stats = [
+  { value: '4', unit: '+', label: 'Years in\nsoftware' },
+  { value: '18', unit: '+', label: 'Websites, apps\nand products' },
+  { value: '500', unit: '+', label: 'Automated tests\non ClashCWL' },
+];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 0.3,
-        staggerChildren: 0.2,
-        delayChildren: 0,
-        when: 'beforeChildren' as const,
-      },
-    },
-  };
+export default function Hero() {
+  const { motion: motionOn } = useMotion();
+  const [portraitOk, setPortraitOk] = useState(true);
+  const { scrollY } = useScroll();
+  const titleScale = useTransform(scrollY, [0, 600], [1, motionOn ? 1.08 : 1]);
+  const titleOpacity = useTransform(scrollY, [0, 500], [1, motionOn ? 0.35 : 1]);
+  const portraitY = useTransform(scrollY, [0, 600], [0, motionOn ? 60 : 0]);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 50,
-        damping: 20,
-      },
-    },
-  };
+  const fadeUp = (delay: number) =>
+    motionOn
+      ? {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
+        }
+      : {};
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Rotating Circular Glows */}
-      <div className="rotating-glow-container"></div>
+    <section id="home" className="hero" aria-label="Introduction">
+      <div className="hero-top">
+        <span>
+          Forward deployed engineer
+          <span className="muted">Co-founder, Azolute AI</span>
+        </span>
+        <span className="availability">
+          <i aria-hidden />
+          Open to remote &amp; on-site in Germany
+        </span>
+      </div>
 
-      <motion.div
-        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Availability Badge */}
-          <motion.div variants={itemVariants}>
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 mb-8">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-              <span className="text-green-500 text-sm font-medium">{profile.availability}</span>
+      <motion.div className="hero-title display" style={{ scale: titleScale, opacity: titleOpacity }} aria-hidden>
+        PORTFOLIO
+      </motion.div>
+
+      {portraitOk && (
+        <motion.div className="hero-portrait" style={{ y: portraitY }}>
+          <img
+            src="/portrait.png"
+            alt=""
+            fetchPriority="high"
+            onError={() => setPortraitOk(false)}
+          />
+        </motion.div>
+      )}
+
+      <div className="hero-intro">
+        <motion.p className="handwriting" {...fadeUp(0.1)}>
+          Hello, I’m
+        </motion.p>
+        <motion.h1 className="display" {...fadeUp(0.2)}>
+          MIRAS<span>.</span>
+        </motion.h1>
+        <motion.p className="hero-role" {...fadeUp(0.3)}>
+          Forward deployed &amp;
+          <br />
+          full-stack engineer
+        </motion.p>
+        <motion.p className="hero-description" {...fadeUp(0.4)}>
+          I embed with clients, learn how their business works, then build, ship and maintain the workflows,
+          integrations and automation they can run themselves.
+        </motion.p>
+        <motion.div {...fadeUp(0.5)}>
+          <a className="primary-link" href="#work">
+            See my work
+            <ArrowDown width={16} height={16} />
+          </a>
+        </motion.div>
+        <motion.span className="hero-location" {...fadeUp(0.6)}>
+          <Pin width={13} height={13} />
+          {profile.location}
+        </motion.span>
+      </div>
+
+      <motion.div className="hero-side" {...fadeUp(0.5)}>
+        <div className="hero-manifesto">
+          <span className="crosshair" aria-hidden>
+            ✳
+          </span>
+          <p>
+            Every deployment.
+            <br />
+            Faster than the last.
+          </p>
+        </div>
+        <div className="hero-stats">
+          {stats.map((s) => (
+            <div key={s.label}>
+              <span className="display">
+                {s.value}
+                <span>{s.unit}</span>
+              </span>
+              <p>
+                {s.label.split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
+              </p>
             </div>
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
-            variants={itemVariants}
-          >
-            <span className="block mb-2">I'm a</span>
-            <span className="gradient-text">forward deployed engineer</span>
-          </motion.h1>
-
-          <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-text-secondary"
-            variants={itemVariants}
-          >
-            turning ambiguous business problems into production systems.
-          </motion.h2>
-
-          {/* Description */}
-          <motion.p
-            className="text-lg sm:text-xl text-text-secondary max-w-3xl mx-auto mb-10 leading-relaxed"
-            variants={itemVariants}
-          >
-            I embed with clients, learn how their business works, then scope, build, ship and maintain the
-            workflows, integrations and automation they can run themselves. Co-founder of{' '}
-            <a
-              href={profile.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary font-semibold hover:text-accent transition-colors"
-            >
-              Azolute AI
-            </a>{' '}
-            and founder of{' '}
-            <a
-              href="https://clashcwl.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary font-semibold hover:text-accent transition-colors"
-            >
-              ClashCWL
-            </a>
-            .
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-            variants={itemVariants}
-          >
-            <a
-              href={profile.resumeUrl}
-              download="Miras_Mujeeb_Resume.pdf"
-              className="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Download CV
-            </a>
-            <a
-              href="#projects"
-              className="w-full sm:w-auto px-8 py-3 rounded-lg border-2 border-primary text-primary font-medium hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1"
-            >
-              View Projects
-            </a>
-          </motion.div>
-
-          {/* Tech Stack */}
-          <motion.div className="space-y-4" variants={itemVariants}>
-            <p className="text-text-secondary font-medium">Building and shipping with</p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 rounded-lg bg-background-secondary border border-primary/20 text-sm font-medium hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 cursor-default"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+          ))}
+          <a href={profile.resumeUrl} download="Miras_Mujeeb_Resume.pdf">
+            <Download width={16} height={16} />
+            <span>Download CV</span>
+          </a>
         </div>
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-      >
-        <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </motion.div>
+      <div className="hero-bottom">
+        <a className="reel-button" href={profile.flagship.url} target="_blank" rel="noopener noreferrer">
+          <span className="play-circle">
+            <Play width={12} height={12} />
+          </span>
+          Visit ClashCWL
+          <span className="muted">Flagship product</span>
+        </a>
+        <span className="hero-scroll">
+          Scroll to discover
+          <ArrowDown width={14} height={14} />
+        </span>
+        <span className="edition">Selected work / 2022–2026</span>
+      </div>
     </section>
   );
-};
-
-export default Hero;
+}

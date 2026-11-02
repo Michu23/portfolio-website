@@ -1,103 +1,112 @@
-import React from 'react';
-import SpotlightCard from './SpotlightCard';
-import { profile } from '../data/profile';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { process, profile, skillGroups } from '../data/profile';
+import Reveal from './Reveal';
 
-const About: React.FC = () => {
-  const competencies = [
-    'Client discovery & scoping',
-    'Production integrations',
-    'Workflow automation',
-    'AI agents & MCP servers',
-    'Serverless AWS',
-    'Reusable tooling',
-  ];
-
-  const facts = [
-    { label: 'Based in', value: profile.location },
-    { label: 'Open to', value: 'Remote worldwide · On-site in Germany' },
-    { label: 'Languages', value: profile.languages.join(', ') },
-  ];
+export default function About() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 80%', 'end 60%'] });
+  const fill = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section id="about" className="py-20 relative section-glow">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Profile Card */}
-            <div className="relative">
-              <div className="relative w-full max-w-md mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl blur-2xl opacity-30 animate-pulse"></div>
+    <section id="about" className="about section-wrap" aria-labelledby="about-title">
+      <Reveal>
+        <div className="about-lead">
+          <div>
+            <span className="eyebrow">02 / Behind the code</span>
+            <h2 id="about-title" className="display">
+              Not just code.
+              <br />
+              A system that <span className="accent">runs itself.</span>
+            </h2>
+          </div>
+          <p>
+            I’m {profile.firstName}, a forward deployed software engineer from {profile.location}. I think like an
+            engineer and a product manager: learn how a business works first, then build the workflows,
+            integrations and automation that let it run and grow with minimal people and spend.
+          </p>
+        </div>
+      </Reveal>
 
-                <SpotlightCard className="card-gradient rounded-2xl backdrop-blur-sm">
-                  <div className="p-8">
-                    <div className="aspect-square rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-8xl font-bold text-primary mb-6">
-                      M
-                    </div>
-                    <dl className="space-y-3">
-                      {facts.map((fact) => (
-                        <div key={fact.label} className="flex items-start justify-between gap-4 text-sm">
-                          <dt className="text-text-secondary">{fact.label}</dt>
-                          <dd className="font-medium text-right">{fact.value}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-                </SpotlightCard>
+      <div className="studio-grid">
+        <Reveal className="education-panel">
+          <h3 className="panel-heading">Education &amp; skills</h3>
+          <p className="eyebrow accent">Education</p>
+          <div className="education-row">
+            <strong>BSc Computer Science</strong>
+            <span>2017 – 2020</span>
+            <p>University of Calicut.</p>
+          </div>
+          <div className="education-row">
+            <strong>Full Stack Bootcamp</strong>
+            <span>2021 – 2022</span>
+            <p>Brototype, Kochi. 10 months of Python, Django, REST APIs, React, SQL, DSA and cloud deployment.</p>
+          </div>
+          <div className="education-row">
+            <strong>Languages</strong>
+            <p>{profile.languages.join(' · ')}</p>
+          </div>
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <p className="eyebrow accent skills-heading">{group.label}</p>
+              <div className="skill-tags">
+                {group.tags.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
               </div>
             </div>
+          ))}
+        </Reveal>
 
-            {/* About Content */}
-            <div className="space-y-6">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                  Hey! I'm <span className="gradient-text">{profile.shortName}</span>,
-                </h2>
-                <h3 className="text-2xl md:text-3xl font-semibold text-text-secondary mb-6">
-                  a forward deployed software engineer who thinks like a product manager.
-                </h3>
-              </div>
-
-              <div className="space-y-4 text-lg text-text-secondary leading-relaxed">
-                <p>
-                  I learn how a client's business works before writing code, then build, ship and maintain the
-                  system that fits it. At Azolute AI I act as sole technical lead for clients: discovery, scoped
-                  design, deployment and maintenance, including n8n automations such as an AI website support
-                  agent and production integrations across payments, OAuth and event-driven AWS.
-                </p>
-
-                <p>
-                  My flagship product, ClashCWL / Legend Smash, is a subscription platform on a serverless AWS
-                  backend with 50+ modules and 500+ automated tests, built solo and AI-first. Before that I was a
-                  founding team member at Dview Technologies, where I led the front end and built real-time LLM
-                  streaming interfaces. I still run live technical reviews for Brototype's full-stack students.
-                </p>
-
-                <p>
-                  My aim is simple: build systems that remove manual work so a company can run and grow with
-                  minimal people and spend.
-                </p>
-              </div>
-
-              {/* Key Skills */}
-              <div className="pt-6">
-                <h4 className="text-xl font-semibold mb-4">Core Competencies</h4>
-                <div className="flex flex-wrap gap-3">
-                  {competencies.map((item) => (
-                    <span
-                      key={item}
-                      className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/30 font-medium hover:border-primary/50 transition-all"
-                    >
-                      {item}
-                    </span>
-                  ))}
+        <Reveal className="process-panel" delay={0.1}>
+          <div>
+            <h3 className="panel-heading">From first call to production</h3>
+          </div>
+          <div className="process-list" ref={trackRef}>
+            <div className="process-track" aria-hidden>
+              <motion.div style={{ scaleY: fill }} />
+            </div>
+            {process.map((step, i) => (
+              <div className="process-row" key={step.title}>
+                <span className="process-num display">{String(i + 1).padStart(2, '0')}</span>
+                <span className="process-node" aria-hidden />
+                <div>
+                  <h4>{step.title}</h4>
+                  <p>{step.text}</p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal className="quote-panel" delay={0.2}>
+          <span className="quote-mark display" aria-hidden>
+            “
+          </span>
+          <blockquote>
+            From client discovery
+            <br />
+            and scoping,
+            <br />
+            <em>
+              to a system they
+              <br />
+              can run themselves.
+            </em>
+          </blockquote>
+          <span className="handwriting">{profile.firstName}</span>
+          <div className="quote-bottom">
+            <span>
+              Let’s remove
+              <br />
+              the manual work.
+            </span>
+            <span className="quote-symbol" aria-hidden>
+              ✳
+            </span>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
-};
-
-export default About;
+}

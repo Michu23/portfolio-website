@@ -1,83 +1,27 @@
-import React from 'react';
 import { profile } from '../data/profile';
+import { ArrowUpRight, Linkedin, Mail } from './Icons';
 
-const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-background-secondary/50 border-t border-primary/10 py-8">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center justify-center space-y-4">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white text-xl shadow-lg">
-                M
-              </div>
-              <span className="font-semibold text-lg">{profile.name}</span>
-            </div>
-
-            {/* Copyright */}
-            <div className="text-center">
-              <p className="text-text-secondary">
-                Made with <span className="text-red-500 inline-block animate-pulse">❤️</span> and lots of{' '}
-                <span className="text-yellow-600">☕</span>
-              </p>
-              <p className="text-text-secondary mt-2">
-                © {currentYear} {profile.name}. All rights reserved.
-              </p>
-              <p className="text-text-secondary text-sm mt-1">{profile.title} · Co-founder, Azolute AI</p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex items-center space-x-4 pt-4">
-              <a
-                href={`mailto:${profile.email}`}
-                className="p-2 rounded-lg hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                aria-label="Email"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                aria-label="LinkedIn"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a
-                href={profile.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg hover:bg-primary/10 text-text-secondary hover:text-primary transition-all"
-                aria-label="Azolute AI"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+    <footer className="footer">
+      <a className="wordmark" href="#home" aria-label="Back to top">
+        MIRAS<span>.</span>
+      </a>
+      <span>
+        © {year} {profile.name}. Every deployment ships faster than the last.
+      </span>
+      <div>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <Linkedin />
+        </a>
+        <a href={`mailto:${profile.email}`} aria-label="Email">
+          <Mail />
+        </a>
+        <a href={profile.companyUrl} target="_blank" rel="noopener noreferrer" aria-label="Azolute AI">
+          <ArrowUpRight />
+        </a>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
