@@ -92,7 +92,13 @@ svg { flex-shrink: 0; stroke-width: 1.5; }
 }
 .hero-title:after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg), transparent 90%); opacity: .85; }
 .hero-portrait { position: absolute; top: 65px; bottom: 0; left: 23%; width: 57%; z-index: 1; transform-origin: bottom center; pointer-events: none; }
-.hero-portrait img { position: absolute; top: 0; height: 120%; width: 100%; object-fit: contain; object-position: center top; filter: contrast(1.03); mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%); }
+.hero-portrait img {
+  position: absolute; top: 0; height: 120%; width: 100%; object-fit: contain; object-position: center top;
+  filter: contrast(1.05) saturate(.9);
+  mask-image: linear-gradient(to bottom, black 72%, transparent 100%), linear-gradient(to right, transparent 0, black 18%, black 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%), linear-gradient(to right, transparent 0, black 18%, black 82%, transparent 100%);
+  mask-composite: intersect; -webkit-mask-composite: source-in;
+}
 .hero-intro { position: absolute; left: var(--gutter); bottom: 110px; width: 28%; z-index: 3; }
 .hero-intro .handwriting { margin-bottom: 8px; transform: rotate(-7deg); transform-origin: left; }
 .hero-intro h1 { font-size: clamp(58px, 6.9vw, 117px); letter-spacing: -.025em; white-space: nowrap; margin-bottom: 14px; }
@@ -488,7 +494,7 @@ html[data-motion=off] *, html[data-motion=off] *:before, html[data-motion=off] *
   .hero-title { top: 74px; left: 17px; font-size: 23.8vw; letter-spacing: -.025em; line-height: 1.15; }
   .hero-title:after { opacity: .5; }
   .hero-portrait { left: 19%; width: 78%; height: 465px; bottom: 269px; }
-  .hero-portrait img { mask-image: linear-gradient(to bottom, black 75%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); }
+  .hero-portrait img { mask-image: linear-gradient(to bottom, black 65%, transparent 100%), linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%), linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%); }
   .hero-intro { left: 20px; right: 20px; bottom: 92px; width: auto; display: grid; grid-template-columns: 1.2fr 1fr; align-items: start; column-gap: 20px; z-index: 3; }
   .hero-intro .handwriting { grid-column: 1 / -1; font-size: 35px; margin-bottom: 3px; }
   .hero-intro h1 { font-size: 66px; grid-column: 1 / -1; line-height: 1.04; margin-bottom: 13px; letter-spacing: -.02em; }
