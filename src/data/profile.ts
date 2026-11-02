@@ -14,8 +14,8 @@ export const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}Miras_Mujeeb_Resume.pdf`,
   portraitUrl: `${import.meta.env.BASE_URL}portrait.webp`,
   languages: ['English', 'Malayalam', 'Hindi'],
-  /** Optional looping track under public/, e.g. `${import.meta.env.BASE_URL}ambient.mp3`. Empty = generative ambient synth. */
-  musicUrl: '',
+  /** Background track. Drop a looping MP3 at public/music.mp3 and it plays; if the file is missing, a generative ambient synth plays instead. */
+  musicUrl: '/music.mp3',
   flagship: { name: 'ClashCWL', url: 'https://clashcwl.com' },
   legends: { name: 'Legend Smash', url: 'https://legends.clashcwl.com' },
 };

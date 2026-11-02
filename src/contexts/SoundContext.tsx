@@ -30,25 +30,37 @@ export function SoundProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
   const engine = useRef<AmbientEngine | null>(null);
   const audio = useRef<HTMLAudioElement | null>(null);
+  const fileMissing = useRef(false);
+
+  const startSynth = useCallback(async () => {
+    engine.current = engine.current ?? new AmbientEngine();
+    await engine.current.start();
+  }, []);
 
   const play = useCallback(async () => {
     try {
-      if (profile.musicUrl) {
+      if (profile.musicUrl && !fileMissing.current) {
         if (!audio.current) {
           audio.current = new Audio(profile.musicUrl);
           audio.current.loop = true;
           audio.current.volume = 0.35;
         }
-        await audio.current.play();
+        try {
+          await audio.current.play();
+        } catch {
+          // No track at musicUrl (or the browser can't play it): fall back to the generative synth.
+          fileMissing.current = true;
+          audio.current = null;
+          await startSynth();
+        }
       } else {
-        engine.current = engine.current ?? new AmbientEngine();
-        await engine.current.start();
+        await startSynth();
       }
       setPlaying(true);
     } catch {
       setPlaying(false);
     }
-  }, []);
+  }, [startSynth]);
 
   const pause = useCallback(async () => {
     if (audio.current) audio.current.pause();

@@ -44,6 +44,7 @@ All personal details, projects, experience, metrics and skills live in `src/data
 
 ## Motion, sound and loading
 
-- Motion is on by default: reveal animations, hero and section parallax, and the accordion transitions. The "Motion" toggle in the header switches it off and the choice is remembered in the browser.
-- Background music is off by default. The "Sound" toggle in the header switches it on, and the choice is remembered. Once on, it starts on the visitor's next click, tap, key press or scroll (browsers block audio before a gesture). By default the soundtrack is a generative ambient synth built with the Web Audio API, so no audio file ships. To use a real track, drop a looping file in `public/` and set `musicUrl` in `src/data/profile.ts`.
+- Motion is always on: reveal animations, hero and section parallax, and the accordion transitions.
+- Background music is off by default. The "Sound" toggle in the header switches it on, and the choice is remembered. Once on, it starts on the visitor's next click, tap, key press or scroll (browsers block audio before a gesture).
+- To use your own track, put a looping MP3 at `public/music.mp3`. Nothing else to change. If that file is missing, a generative ambient synth built with the Web Audio API plays instead. To use a different file name, update `musicUrl` in `src/data/profile.ts`.
 - A full-screen loader with a counter and progress line shows on first paint until fonts and assets are ready, then lifts to reveal the hero.

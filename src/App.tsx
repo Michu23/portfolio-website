@@ -1,4 +1,3 @@
-import { MotionProvider } from './contexts/MotionContext';
 import { SoundProvider } from './contexts/SoundContext';
 import Loader from './components/Loader';
 import Header from './components/Header';
@@ -12,8 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <MotionProvider>
-      <SoundProvider>
+    <SoundProvider>
       <Loader />
       <Header />
       <main>
@@ -25,8 +23,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      </SoundProvider>
-    </MotionProvider>
+    </SoundProvider>
   );
 }
 

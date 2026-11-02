@@ -322,9 +322,6 @@ a.project-row-inner:hover .project-link svg { transform: translate(3px, -3px); }
 .footer > div > a { height: 44px; width: 44px; display: flex; justify-content: center; align-items: center; }
 .footer > div > a:hover { color: var(--red); }
 
-/* Motion off */
-html[data-motion=off] { scroll-behavior: auto; }
-html[data-motion=off] *, html[data-motion=off] *:before, html[data-motion=off] *:after { animation: none !important; transition-duration: .01ms !important; }
 @media (hover: none) {
 }
 

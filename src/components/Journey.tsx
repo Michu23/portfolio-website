@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useMotion } from '../contexts/MotionContext';
 import { jobs, milestones, profile } from '../data/profile';
 import { ArrowUpRight, Download, Minus, Plus } from './Icons';
 import Reveal from './Reveal';
@@ -8,7 +7,6 @@ import Parallax from './Parallax';
 
 export default function Journey() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const { motion: motionOn } = useMotion();
 
   return (
     <section id="journey" className="journey section-wrap" aria-labelledby="journey-title">
@@ -51,9 +49,9 @@ export default function Journey() {
                   {isOpen && (
                     <motion.div
                       id={panelId}
-                      initial={motionOn ? { height: 0, opacity: 0 } : false}
+                      initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
-                      exit={motionOn ? { height: 0, opacity: 0 } : undefined}
+                      exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <div className="experience-body">

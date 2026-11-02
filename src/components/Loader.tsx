@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useMotion } from '../contexts/MotionContext';
 
 const MIN_MS = 1500;
 const MAX_MS = 3500;
 
 /** Cinematic preloader: wordmark, counter and a red progress line, then the curtain lifts. */
 export default function Loader() {
-  const { motion: motionOn } = useMotion();
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     const start = performance.now();
-    const minMs = motionOn ? MIN_MS : 500;
+    const minMs = MIN_MS;
     let ready = false;
     let raf = 0;
 
@@ -38,14 +36,14 @@ export default function Loader() {
       const finished = ready && elapsed >= minMs;
       setProgress(finished ? 100 : Math.floor(timed));
       if (finished) {
-        setTimeout(() => setDone(true), motionOn ? 350 : 0);
+        setTimeout(() => setDone(true), 350);
         return;
       }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [motionOn]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle('is-loading', !done);
@@ -61,7 +59,7 @@ export default function Loader() {
           aria-live="polite"
           aria-label="Loading"
           initial={false}
-          exit={motionOn ? { y: '-100%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } } : { opacity: 0 }}
+          exit={{ y: '-100%', transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }}
         >
           <div className="loader-top">
             <span className="wordmark">
