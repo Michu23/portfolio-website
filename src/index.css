@@ -91,12 +91,12 @@ svg { flex-shrink: 0; stroke-width: 1.5; }
   width: calc(100% - var(--gutter) * 2); white-space: nowrap; transform-origin: center;
 }
 .hero-title:after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg), transparent 90%); opacity: .85; }
-.hero-portrait { position: absolute; top: 65px; bottom: 0; left: 23%; width: 57%; z-index: 1; transform-origin: bottom center; pointer-events: none; }
+.hero-portrait { position: absolute; top: 40px; bottom: 0; left: 23%; width: 57%; z-index: 1; transform-origin: bottom center; pointer-events: none; }
 .hero-portrait img {
-  position: absolute; top: 0; height: 120%; width: 100%; object-fit: contain; object-position: center top;
-  filter: contrast(1.05) saturate(.9);
-  mask-image: linear-gradient(to bottom, black 72%, transparent 100%), linear-gradient(to right, transparent 0, black 18%, black 82%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%), linear-gradient(to right, transparent 0, black 18%, black 82%, transparent 100%);
+  position: absolute; bottom: 0; left: 0; height: 104%; width: 100%; object-fit: contain; object-position: center bottom;
+  filter: contrast(1.04) saturate(.92);
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%), linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%), linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
   mask-composite: intersect; -webkit-mask-composite: source-in;
 }
 .hero-intro { position: absolute; left: var(--gutter); bottom: 110px; width: 28%; z-index: 3; }
@@ -393,8 +393,8 @@ html[data-motion=off] *, html[data-motion=off] *:before, html[data-motion=off] *
   .header-contact { display: none; }
   .hero { height: 690px; }
   .hero-title { top: 95px; font-size: 21.1vw; }
-  .hero-portrait { top: auto; height: 78%; width: 65%; left: 19%; bottom: 1px; }
-  .hero-portrait img { position: static; height: 100%; object-position: center bottom; }
+  .hero-portrait { top: auto; height: 80%; width: 66%; left: 19%; bottom: 0; }
+  .hero-portrait img { height: 100%; }
   .hero-intro { width: 33%; bottom: 110px; }
   .hero-intro h1 { font-size: 61px; }
   .hero-role { font-size: 17px; }
@@ -480,8 +480,8 @@ html[data-motion=off] *, html[data-motion=off] *:before, html[data-motion=off] *
   .availability i { width: 4px; height: 4px; }
   .hero-title { top: 74px; left: 17px; font-size: 23.8vw; letter-spacing: -.025em; line-height: 1.15; }
   .hero-title:after { opacity: .5; }
-  .hero-portrait { left: 19%; width: 78%; height: 465px; bottom: 269px; }
-  .hero-portrait img { mask-image: linear-gradient(to bottom, black 65%, transparent 100%), linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%), linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%); }
+  .hero-portrait { left: -8%; width: 96%; height: 500px; bottom: 285px; }
+  .hero-portrait img { mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%); }
   .hero-intro { left: 20px; right: 20px; bottom: 92px; width: auto; display: grid; grid-template-columns: 1.2fr 1fr; align-items: start; column-gap: 20px; z-index: 3; }
   .hero-intro .handwriting { grid-column: 1 / -1; font-size: 35px; margin-bottom: 3px; }
   .hero-intro h1 { font-size: 66px; grid-column: 1 / -1; line-height: 1.04; margin-bottom: 13px; letter-spacing: -.02em; }
@@ -614,7 +614,7 @@ html[data-motion=off] *, html[data-motion=off] *:before, html[data-motion=off] *
 }
 @media (max-width: 370px) {
   .hero { height: 770px; }
-  .hero-portrait { height: 425px; bottom: 284px; left: 15%; width: 83%; }
+  .hero-portrait { height: 450px; bottom: 290px; left: -10%; width: 100%; }
   .hero-intro { column-gap: 12px; grid-template-columns: 1.15fr 1fr; bottom: 78px; }
   .hero-intro h1 { font-size: 58px; }
   .hero-intro .handwriting { font-size: 31px; }
