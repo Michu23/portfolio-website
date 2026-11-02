@@ -10,11 +10,12 @@ interface SoundContextType {
 
 const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
+// Sound is off by default. Visitors opt in with the header toggle; the choice is remembered.
 const readInitial = (): boolean => {
   try {
-    return localStorage.getItem('sound') !== 'off';
+    return localStorage.getItem('sound') === 'on';
   } catch {
-    return true;
+    return false;
   }
 };
 
