@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { useMotion } from '../contexts/MotionContext';
 
 interface RevealProps {
   children: ReactNode;
@@ -10,12 +9,7 @@ interface RevealProps {
 }
 
 export default function Reveal({ children, delay = 0, className, as = 'div' }: RevealProps) {
-  const { motion: enabled } = useMotion();
   const Tag = motion[as];
-  if (!enabled) {
-    const Plain = as;
-    return <Plain className={className}>{children}</Plain>;
-  }
   return (
     <Tag
       className={className}

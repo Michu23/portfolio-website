@@ -82,11 +82,6 @@ export const Close = (p: SVGProps<SVGSVGElement>) => (
     <path d="M6 6l12 12M18 6 6 18" />
   </svg>
 );
-export const MotionIcon = ({ on, ...p }: SVGProps<SVGSVGElement> & { on: boolean }) => (
-  <svg {...base(p)} width={14} height={14}>
-    {on ? <path d="M8 6v12M16 6v12" /> : <polygon points="8,6 17,12 8,18" />}
-  </svg>
-);
 export const Laurel = (p: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 48" fill="currentColor" aria-hidden {...p}>
     <path d="M12 46c-6-4-9-10-9-18 2 1 4 3 5 6 0-4-1-8 1-12 2 2 3 5 3 9 1-4 3-7 6-9 0 4-1 8-3 11 2-2 4-4 7-5-1 8-5 14-10 18Z" />

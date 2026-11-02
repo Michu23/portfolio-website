@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useMotion } from '../contexts/MotionContext';
 import { profile } from '../data/profile';
 import { ArrowDown, Download, Pin, Play } from './Icons';
 
@@ -11,24 +10,20 @@ const stats = [
 ];
 
 export default function Hero() {
-  const { motion: motionOn } = useMotion();
   const [portraitOk, setPortraitOk] = useState(true);
   const { scrollY } = useScroll();
-  const titleScale = useTransform(scrollY, [0, 700], [1, motionOn ? 1.1 : 1]);
-  const titleY = useTransform(scrollY, [0, 700], [0, motionOn ? -140 : 0]);
-  const titleOpacity = useTransform(scrollY, [0, 600], [1, motionOn ? 0.25 : 1]);
-  const portraitY = useTransform(scrollY, [0, 700], [0, motionOn ? 110 : 0]);
-  const introY = useTransform(scrollY, [0, 700], [0, motionOn ? 50 : 0]);
-  const sideY = useTransform(scrollY, [0, 700], [0, motionOn ? 30 : 0]);
+  const titleScale = useTransform(scrollY, [0, 700], [1, 1.1]);
+  const titleY = useTransform(scrollY, [0, 700], [0, -140]);
+  const titleOpacity = useTransform(scrollY, [0, 600], [1, 0.25]);
+  const portraitY = useTransform(scrollY, [0, 700], [0, 110]);
+  const introY = useTransform(scrollY, [0, 700], [0, 50]);
+  const sideY = useTransform(scrollY, [0, 700], [0, 30]);
 
-  const fadeUp = (delay: number) =>
-    motionOn
-      ? {
-          initial: { opacity: 0, y: 24 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
-        }
-      : {};
+  const fadeUp = (delay: number) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
+  });
 
   return (
     <section id="home" className="hero" aria-label="Introduction">
